@@ -1,0 +1,19 @@
+#!/usr/bin/python
+import sys
+import pickle
+import lzma
+def main(fname):
+    print(fname)
+    if fname.endswith('.xz'):
+        with lzma.open(fname,'rb') as f:
+            loaded = pickle.load(f)
+        pass
+    else:
+        assert fname.endswith('.pkl')
+        with open(fname,'rb') as f:
+            loaded = pickle.load(f)
+    import ipdb;ipdb.set_trace()
+    pass
+if __name__ == '__main__':
+    fname = sys.argv[1]
+    main(fname)
